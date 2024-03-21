@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Header from "./components/Header/Header";
+import Infopanel from "./components/Infopanel/Infopanel";
+import Sidebar, { SidebarItem } from "./components/Sidebar";
+import Home from "./pages/Workflows";
+import Dictionary from './pages/Dictionary'
+import Forms from './pages/Forms'
+import {
+  Route,
+  Switch,
+  BrowserRouter as Router,
+  Routes,
+  BrowserRouter,
+} from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="flex h-full">
+        <Sidebar>
+          <SidebarItem />
+        </Sidebar>
+        <div className="w-full">
+          <Header />
+          <Infopanel />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/workflow" element={<Home />} />
+              <Route path="/dictionary" element={<Dictionary/>}/>
+              <Route path="/forms" element={<Forms/>}/>
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </div>
+    </>
   );
 }
 
